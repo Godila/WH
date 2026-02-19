@@ -6,9 +6,10 @@ interface SourceSelectProps {
   value?: number
   onChange?: (value: number | undefined) => void
   style?: React.CSSProperties
+  disabled?: boolean
 }
 
-export default function SourceSelect({ value, onChange, style }: SourceSelectProps) {
+export default function SourceSelect({ value, onChange, style, disabled }: SourceSelectProps) {
   const [sources, setSources] = useState<Source[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -34,6 +35,7 @@ export default function SourceSelect({ value, onChange, style }: SourceSelectPro
       allowClear
       placeholder="Выберите ПВЗ"
       loading={loading}
+      disabled={disabled}
       onChange={onChange}
       options={sources.map((s) => ({ value: s.id, label: s.name }))}
     />

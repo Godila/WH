@@ -7,9 +7,10 @@ interface ProductSelectProps {
   value?: number
   onChange?: (value: number | undefined) => void
   style?: React.CSSProperties
+  disabled?: boolean
 }
 
-export default function ProductSelect({ value, onChange, style }: ProductSelectProps) {
+export default function ProductSelect({ value, onChange, style, disabled }: ProductSelectProps) {
   const [options, setOptions] = useState<{ value: number; label: string }[]>([])
   const [loading, setLoading] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
@@ -74,6 +75,8 @@ export default function ProductSelect({ value, onChange, style }: ProductSelectP
       onClear={handleClear}
       placeholder="Минимум 2 символа для поиска"
       notFoundContent={loading ? <Spin size="small" /> : 'Ничего не найдено'}
+      loading={loading}
+      disabled={disabled}
       options={options}
     />
   )

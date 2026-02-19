@@ -70,6 +70,7 @@ export default function OperationForm({ open, onClose, onSuccess }: OperationFor
               value: type,
               label: OPERATION_LABELS[type],
             }))}
+            disabled={loading}
           />
         </Form.Item>
 
@@ -78,7 +79,7 @@ export default function OperationForm({ open, onClose, onSuccess }: OperationFor
           label="Товар"
           rules={[{ required: true, message: 'Выберите товар' }]}
         >
-          <ProductSelect style={{ width: '100%' }} />
+          <ProductSelect style={{ width: '100%' }} disabled={loading} />
         </Form.Item>
 
         <Form.Item
@@ -86,7 +87,7 @@ export default function OperationForm({ open, onClose, onSuccess }: OperationFor
           label="Количество"
           rules={[{ required: true, message: 'Введите количество' }]}
         >
-          <InputNumber min={1} style={{ width: '100%' }} placeholder="Количество" />
+          <InputNumber min={1} style={{ width: '100%' }} placeholder="Количество" disabled={loading} />
         </Form.Item>
 
         {config?.sourceRequired && (
@@ -95,7 +96,7 @@ export default function OperationForm({ open, onClose, onSuccess }: OperationFor
             label="ПВЗ"
             rules={[{ required: true, message: 'Выберите ПВЗ' }]}
           >
-            <SourceSelect style={{ width: '100%' }} />
+            <SourceSelect style={{ width: '100%' }} disabled={loading} />
           </Form.Item>
         )}
 
@@ -105,7 +106,7 @@ export default function OperationForm({ open, onClose, onSuccess }: OperationFor
             label="РЦ"
             rules={[{ required: true, message: 'Выберите РЦ' }]}
           >
-            <DCSelect style={{ width: '100%' }} />
+            <DCSelect style={{ width: '100%' }} disabled={loading} />
           </Form.Item>
         )}
       </Form>

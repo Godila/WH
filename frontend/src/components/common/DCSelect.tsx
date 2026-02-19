@@ -6,9 +6,10 @@ interface DCSelectProps {
   value?: number
   onChange?: (value: number | undefined) => void
   style?: React.CSSProperties
+  disabled?: boolean
 }
 
-export default function DCSelect({ value, onChange, style }: DCSelectProps) {
+export default function DCSelect({ value, onChange, style, disabled }: DCSelectProps) {
   const [dcs, setDCs] = useState<DistributionCenter[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -34,6 +35,7 @@ export default function DCSelect({ value, onChange, style }: DCSelectProps) {
       allowClear
       placeholder="Выберите РЦ"
       loading={loading}
+      disabled={disabled}
       onChange={onChange}
       options={dcs.map((dc) => ({ value: dc.id, label: dc.name }))}
     />
