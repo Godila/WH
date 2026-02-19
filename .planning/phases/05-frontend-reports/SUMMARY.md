@@ -150,3 +150,85 @@ Implemented a complete operation form for conducting stock operations with dynam
 - [x] All tasks executed
 - [x] Each task committed individually
 - [x] SUMMARY.md updated
+
+---
+
+# Phase 05-05: Error Handling & Final Integration
+
+## Summary
+
+Completed frontend polish with comprehensive error handling, loading states, and final integration testing.
+
+## Tasks Completed
+
+### 1. Create ErrorBoundary and useApi hook
+- **ErrorBoundary.tsx**: Class component with `getDerivedStateFromError` and `componentDidCatch`
+  - Fallback UI with error message and "Перезагрузить" button
+  - Logs errors to console for debugging
+- **useApi.ts**: Custom hook for API calls with loading/error state
+  - Returns: `{ data, loading, error, execute }`
+  - Auto `message.error()` on failure
+  - Helper function `getErrorMessage()` for extracting error messages
+
+**Commit:** `feat(05-05): create ErrorBoundary and useApi hook`
+
+### 2. Add loading states to all components
+- **Login.tsx**: Button loading prop from `authStore.isLoading` (already present)
+- **Dashboard.tsx**: Spin wrapper, Statistic loading props (already present)
+- **Journal.tsx**: Spin wrapper for table (already present)
+- **OperationForm.tsx**: 
+  - Submit button loading via `confirmLoading`
+  - All form fields disabled during submission
+- **ProductSelect.tsx**: Added loading prop and disabled prop
+- **SourceSelect.tsx**: Added disabled prop
+- **DCSelect.tsx**: Added disabled prop
+
+**Commit:** `feat(05-05): add loading states to all components`
+
+### 3. Verify error handling and integration
+- **api/client.ts**:
+  - 401: logout + redirect (existing)
+  - Network errors: "Ошибка сети" message
+  - 500: show detail or "Ошибка сервера" message
+- **App.tsx**:
+  - Wrapped app in ErrorBoundary
+  - Added NotFound (404) page component
+
+**Commit:** `feat(05-05): verify error handling and integration`
+
+## Files Modified
+
+| File | Changes |
+|------|---------|
+| `frontend/src/components/common/ErrorBoundary.tsx` | New - Error boundary component |
+| `frontend/src/hooks/useApi.ts` | New - API hook with loading/error state |
+| `frontend/src/api/client.ts` | Enhanced error handling for network/server errors |
+| `frontend/src/App.tsx` | ErrorBoundary wrapper, NotFound page |
+| `frontend/src/pages/Movements/OperationForm.tsx` | Disabled fields during submission |
+| `frontend/src/components/products/ProductSelect.tsx` | Loading/disabled props, fixed types |
+| `frontend/src/components/common/SourceSelect.tsx` | Disabled prop |
+| `frontend/src/components/common/DCSelect.tsx` | Disabled prop |
+| `frontend/src/pages/Dashboard.tsx` | Fixed icon import |
+| `frontend/src/types/movement.ts` | Changed enum to const object |
+
+## Type Fixes
+
+- Changed `OperationType` from `enum` to `const` object pattern for `erasableSyntaxOnly` compatibility
+- Fixed `NodeJS.Timeout` to `ReturnType<typeof setTimeout>` for type safety
+- Added type assertion for `Form.useWatch` return value
+
+## Commits
+
+1. `82818ef` - feat(05-05): create ErrorBoundary and useApi hook
+2. `1bb5e45` - feat(05-05): add loading states to all components
+3. `ba2b903` - feat(05-05): verify error handling and integration
+
+## Build Status
+
+Production build successful with no errors.
+
+## Success Criteria
+- [x] All tasks executed
+- [x] Each task committed individually
+- [x] SUMMARY.md created
+- [x] Production build succeeds

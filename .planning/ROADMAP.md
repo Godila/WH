@@ -132,6 +132,8 @@ Plans:
 
 **Goal:** Менеджеры используют web-интерфейс для ежедневной работы с системой
 
+**Status:** ✓ Complete (2026-02-19)
+
 **Dependencies:** Phase 3 (backend API, operations)
 
 **Requirements:**
@@ -141,11 +143,11 @@ Plans:
 **Plans:** 5 plans in 5 waves
 
 Plans:
-- [ ] 05-01-PLAN.md — Foundation: Vite setup, Ant Design, Axios client, Zustand auth, Login page
-- [ ] 05-02-PLAN.md — Dashboard: AppLayout, products table, search, statistics
-- [ ] 05-03-PLAN.md — Operations: Operation form, product autocomplete, dynamic fields
-- [ ] 05-04-PLAN.md — Movement Journal: Table, filters, color coding, pagination
-- [ ] 05-05-PLAN.md — Polish & Verification: Error handling, loading states, integration test
+- [x] 05-01-PLAN.md — Foundation: Vite setup, Ant Design, Axios client, Zustand auth, Login page
+- [x] 05-02-PLAN.md — Dashboard: AppLayout, products table, search, statistics
+- [x] 05-03-PLAN.md — Operations: Operation form, product autocomplete, dynamic fields
+- [x] 05-04-PLAN.md — Movement Journal: Table, filters, color coding, pagination
+- [x] 05-05-PLAN.md — Polish & Verification: Error handling, loading states, integration test
 
 **Success Criteria:**
 1. Менеджер видит Dashboard с таблицей товаров (баркод, GTIN, артикул, бренд, размер, остаток, брак)
@@ -180,11 +182,11 @@ Plans:
 | 2 - Master Data & Warehouses | ✓ Complete | 10 | ██████ 100% |
 | 3 - Stock Core & Operations | ✓ Complete | 22 | ██████ 100% |
 | 4 - Excel Import | ✓ Complete | 5 | ██████ 100% |
-| 5 - Frontend & Reports | Not Started | 14 | ░░░░░ 0% |
+| 5 - Frontend & Reports | ✓ Complete | 14 | ██████ 100% |
 | 6 - Infrastructure & Deployment | Not Started | 2 | ░░░░░ 0% |
 
 **Total:** 66 requirements across 6 phases
-**Completed:** 50/66 (76%)
+**Completed:** 64/66 (97%)
 
 ---
 
