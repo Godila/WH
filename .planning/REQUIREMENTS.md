@@ -143,10 +143,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
-| AUTH-04 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete |
+| AUTH-02 | Phase 1 | Complete |
+| AUTH-03 | Phase 1 | Complete |
+| AUTH-04 | Phase 1 | Complete |
 | PROD-01 | Phase 2 | Pending |
 | PROD-02 | Phase 2 | Pending |
 | PROD-03 | Phase 2 | Pending |
@@ -155,12 +155,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PROD-06 | Phase 2 | Pending |
 | PROD-07 | Phase 2 | Pending |
 | PROD-08 | Phase 2 | Pending |
-| SRC-01 | Phase 1 | Pending |
-| SRC-02 | Phase 1 | Pending |
-| SRC-03 | Phase 1 | Pending |
-| DC-01 | Phase 1 | Pending |
-| DC-02 | Phase 1 | Pending |
-| DC-03 | Phase 1 | Pending |
+| SRC-01 | Phase 1 | Complete |
+| SRC-02 | Phase 1 | Complete |
+| SRC-03 | Phase 1 | Complete |
+| DC-01 | Phase 1 | Complete |
+| DC-02 | Phase 1 | Complete |
+| DC-03 | Phase 1 | Complete |
 | STOCK-01 | Phase 2 | Pending |
 | STOCK-02 | Phase 2 | Pending |
 | STOCK-03 | Phase 3 | Pending |
@@ -205,10 +205,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-12 | Phase 5 | Pending |
 | UI-13 | Phase 5 | Pending |
 | INF-01 | Phase 6 | Pending |
-| INF-02 | Phase 1 | Pending |
-| INF-03 | Phase 1 | Pending |
+| INF-02 | Phase 1 | Complete |
+| INF-03 | Phase 1 | Complete |
 | INF-04 | Phase 6 | Pending |
-| INF-05 | Phase 1 | Pending |
+| INF-05 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 67 total
