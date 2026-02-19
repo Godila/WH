@@ -84,6 +84,13 @@ Plans:
 - JRN-01 through JRN-06 — Журнал движений
 - RPT-01 — Сводный отчёт
 
+**Plans:** 3 plans in 3 waves
+
+Plans:
+- [ ] 03-01-PLAN.md — Data layer: StockMovement model, OperationType enum, schemas, migration
+- [ ] 03-02-PLAN.md — Service layer: MovementService with 9 operations, validation, atomicity
+- [ ] 03-03-PLAN.md — API layer: Movements CRUD, journal filtering, summary endpoint
+
 **Success Criteria:**
 1. Менеджер может провести приёмку годного товара (RECEIPT) — Stock.quantity увеличивается
 2. Менеджер может провести отгрузку в РЦ (SHIPMENT_RC) — Stock.quantity уменьшается, система блокирует отгрузку больше чем есть
