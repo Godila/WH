@@ -76,6 +76,8 @@ Plans:
 
 **Goal:** Менеджеры могут проводить все 9 типов складских операций с автоматическим пересчётом остатков
 
+**Status:** ✓ Complete (2026-02-19)
+
 **Dependencies:** Phase 2 (products, stock records exist)
 
 **Requirements:**
@@ -87,9 +89,9 @@ Plans:
 **Plans:** 3 plans in 3 waves
 
 Plans:
-- [ ] 03-01-PLAN.md — Data layer: StockMovement model, OperationType enum, schemas, migration
-- [ ] 03-02-PLAN.md — Service layer: MovementService with 9 operations, validation, atomicity
-- [ ] 03-03-PLAN.md — API layer: Movements CRUD, journal filtering, summary endpoint
+- [x] 03-01-PLAN.md — Data layer: StockMovement model, OperationType enum, schemas, migration
+- [x] 03-02-PLAN.md — Service layer: MovementService with 9 operations, validation, atomicity
+- [x] 03-03-PLAN.md — API layer: Movements CRUD, journal filtering, summary endpoint
 
 **Success Criteria:**
 1. Менеджер может провести приёмку годного товара (RECEIPT) — Stock.quantity увеличивается
@@ -158,13 +160,13 @@ Plans:
 |-------|--------|--------------|----------|
 | 1 - Foundation & Authentication | ✓ Complete | 13 | ██████ 100% |
 | 2 - Master Data & Warehouses | ✓ Complete | 10 | ██████ 100% |
-| 3 - Stock Core & Operations | Not Started | 22 | ░░░░░ 0% |
+| 3 - Stock Core & Operations | ✓ Complete | 22 | ██████ 100% |
 | 4 - Excel Import | Not Started | 5 | ░░░░░ 0% |
 | 5 - Frontend & Reports | Not Started | 14 | ░░░░░ 0% |
 | 6 - Infrastructure & Deployment | Not Started | 2 | ░░░░░ 0% |
 
 **Total:** 66 requirements across 6 phases
-**Completed:** 23/66 (35%)
+**Completed:** 45/66 (68%)
 
 ---
 

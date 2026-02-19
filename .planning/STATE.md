@@ -18,17 +18,17 @@
 
 ## Current Position
 
-**Phase:** 3 - Stock Core & Operations
+**Phase:** 4 - Excel Import
 **Plan:** None yet
-**Status:** Phase 2 Complete, Ready for Phase 3
-**Progress:** `████░░ 35%`
+**Status:** Phase 3 Complete, Ready for Phase 4
+**Progress:** `██████ 68%`
 
 ```
-[████████░░░░░░░░░░] 35% — Phase 2 Complete
+[█████████████░░░░░] 68% — Phase 3 Complete
 
 Phase 1: Foundation & Authentication  ██████ 100% ✓
 Phase 2: Master Data & Warehouses     ██████ 100% ✓
-Phase 3: Stock Core & Operations      ░░░░░░ 0%
+Phase 3: Stock Core & Operations      ██████ 100% ✓
 Phase 4: Excel Import                 ░░░░░░ 0%
 Phase 5: Frontend & Reports           ░░░░░░ 0%
 Phase 6: Infrastructure & Deployment  ░░░░░░ 0%
@@ -40,10 +40,10 @@ Phase 6: Infrastructure & Deployment  ░░░░░░ 0%
 
 | Metric | Value |
 |--------|-------|
-| Phases Complete | 2/6 |
-| Requirements Done | 23/66 |
-| Plans Executed | 6 |
-| Commits | 9 |
+| Phases Complete | 3/6 |
+| Requirements Done | 45/66 |
+| Plans Executed | 9 |
+| Commits | 14 |
 | Time Elapsed | 0 days |
 
 ---
@@ -57,16 +57,17 @@ Phase 6: Infrastructure & Deployment  ░░░░░░ 0%
 | Stack: FastAPI + SQLAlchemy 2.0 async + PostgreSQL + React 18 + Ant Design | Production-ready async patterns, enterprise UI | ✓ Validated |
 | Service layer pattern for stock operations | Atomic operations, validation, audit logging | ✓ Validated |
 | GTIN + Barcode оба уникальны | Баркод для МП, GTIN для внутренних процессов | ✓ Validated |
-| Только свои склады | НЕ отслеживаем остатки маркетплейсов | — Pending |
-| 9 атомарных операций | Покрывают все бизнес-сценарии фулфилмента | — Pending |
+| Только свои склады | НЕ отслеживаем остатки маркетплейсов | ✓ Validated |
+| 9 атомарных операций | Покрывают все бизнес-сценарии фулфилмента | ✓ Validated |
 | 6 фаз MVP | Полный функционал за неделю | — Pending |
 | JWT auth with python-jose + bcrypt | Secure auth with configurable token expiration | ✓ Validated |
 | Product-Stock one-to-one relationship | Each product has exactly one Stock and one DefectStock | ✓ Validated |
 | Soft delete for products | Preserve data integrity, allow recovery | ✓ Validated |
+| TOCTOU prevention with raw SQL | Atomic `UPDATE WHERE quantity >= :qty` prevents race conditions | ✓ Validated |
 
 ### Active Todos
 
-- [ ] Run `/gsd-plan-phase 3` to plan Stock Core & Operations phase
+- [ ] Run `/gsd-plan-phase 4` to plan Excel Import phase
 
 ### Blockers
 
@@ -74,7 +75,7 @@ None currently.
 
 ### Session Notes
 
-**2026-02-19:** Phase 2 complete. Products CRUD API with auto-stock creation working. Ready for Phase 3.
+**2026-02-19:** Phase 3 complete. All 9 stock operations working with atomic updates. Ready for Phase 4 (Excel Import).
 
 ---
 
@@ -115,13 +116,41 @@ None currently.
 
 ---
 
+## Phase 3 Summary
+
+**What was built:**
+- StockMovement model with OperationType enum (9 types)
+- MovementService with atomic TOCTOU-safe operations
+- Movement schemas with conditional field validation
+- Stock API endpoints for movements and summary
+
+**9 Operations:**
+| Operation | Effect |
+|-----------|--------|
+| RECEIPT | Stock += qty |
+| RECEIPT_DEFECT | DefectStock += qty |
+| SHIPMENT_RC | Stock -= qty (validated) |
+| RETURN_PICKUP | Stock += qty |
+| RETURN_DEFECT | DefectStock += qty |
+| SELF_PURCHASE | Stock += qty |
+| WRITE_OFF | Stock -= qty, DefectStock += qty |
+| RESTORATION | DefectStock -= qty, Stock += qty |
+| UTILIZATION | DefectStock -= qty (validated) |
+
+**API Endpoints:**
+- POST /api/stock/movements - Execute stock operation
+- GET /api/stock/movements - Movement journal with filters
+- GET /api/stock/summary - Stock statistics
+
+---
+
 ## Session Continuity
 
 ### Quick Context for New Sessions
 
 1. **Read:** `PROJECT.md`, `ROADMAP.md`
-2. **Current Phase:** 3 - Stock Core & Operations
-3. **Next Action:** `/gsd-plan-phase 3`
+2. **Current Phase:** 4 - Excel Import
+3. **Next Action:** `/gsd-plan-phase 4`
 4. **Stack:** FastAPI + SQLAlchemy async + PostgreSQL + React + Ant Design
 
 ### File Locations
@@ -133,18 +162,22 @@ app/
 │   ├── deps.py          # get_current_user
 │   ├── sources.py       # Sources CRUD
 │   ├── distribution_centers.py  # DCs CRUD
-│   └── products.py      # Products CRUD (new)
+│   ├── products.py      # Products CRUD
+│   └── stock.py         # Stock operations (new)
 ├── core/                # Core configuration
 │   ├── config.py        # Pydantic settings
 │   └── security.py      # JWT, password hashing
 ├── models/              # SQLAlchemy models
-│   ├── product.py       # Product model (new)
-│   ├── stock.py         # Stock model (new)
-│   └── defect_stock.py  # DefectStock model (new)
+│   ├── product.py       # Product model
+│   ├── stock.py         # Stock model
+│   ├── defect_stock.py  # DefectStock model
+│   └── stock_movement.py # StockMovement model (new)
 ├── schemas/             # Pydantic schemas
-│   └── product.py       # Product schemas (new)
+│   ├── product.py       # Product schemas
+│   └── movement.py      # Movement schemas (new)
 ├── services/            # Business logic
-│   └── auth.py          # AuthService
+│   ├── auth.py          # AuthService
+│   └── movement.py      # MovementService (new)
 ├── database.py          # Async engine
 ├── main.py              # FastAPI app
 └── seed.py              # Database seeding
@@ -152,4 +185,4 @@ app/
 
 ---
 
-*State updated: 2026-02-19 after Phase 2 completion*
+*State updated: 2026-02-19 after Phase 3 completion*
