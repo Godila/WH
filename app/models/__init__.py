@@ -5,6 +5,7 @@ from app.models.distribution_center import DistributionCenter
 from app.models.product import Product
 from app.models.stock import Stock
 from app.models.defect_stock import DefectStock
+from app.models.stock_movement import StockMovement, OperationType
 
 __all__ = [
     "Base",
@@ -14,4 +15,6 @@ __all__ = [
     "Product",
     "Stock",
     "DefectStock",
+    "StockMovement",
+    "OperationType",
 ]

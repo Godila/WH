@@ -7,6 +7,7 @@ from app.models.base import Base, UUIDMixin, TimestampMixin
 if TYPE_CHECKING:
     from app.models.stock import Stock
     from app.models.defect_stock import DefectStock
+    from app.models.stock_movement import StockMovement
 
 
 class Product(Base, UUIDMixin, TimestampMixin):
@@ -54,7 +55,7 @@ class Product(Base, UUIDMixin, TimestampMixin):
         index=True
     )
     
-    # Relationships (will be set up after Stock/DefectStock models exist)
+    # Relationships
     stock: Mapped["Stock"] = relationship(
         "Stock",
         back_populates="product",
@@ -65,6 +66,11 @@ class Product(Base, UUIDMixin, TimestampMixin):
         "DefectStock",
         back_populates="product",
         uselist=False,
+        lazy="selectin"
+    )
+    movements: Mapped[list["StockMovement"]] = relationship(
+        "StockMovement",
+        back_populates="product",
         lazy="selectin"
     )
     

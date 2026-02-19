@@ -1,7 +1,11 @@
 from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from typing import TYPE_CHECKING
 
 from app.models.base import Base, UUIDMixin, TimestampMixin
+
+if TYPE_CHECKING:
+    from app.models.stock_movement import StockMovement
 
 
 class DistributionCenter(Base, UUIDMixin, TimestampMixin):
@@ -21,6 +25,13 @@ class DistributionCenter(Base, UUIDMixin, TimestampMixin):
     marketplace: Mapped[str] = mapped_column(
         String(50),
         nullable=False
+    )
+    
+    # Relationships
+    movements: Mapped[list["StockMovement"]] = relationship(
+        "StockMovement",
+        back_populates="distribution_center",
+        lazy="selectin"
     )
     
     def __repr__(self) -> str:

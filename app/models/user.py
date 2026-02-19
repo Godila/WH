@@ -1,7 +1,11 @@
-from sqlalchemy import Boolean, String, Index
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import Boolean, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from typing import TYPE_CHECKING
 
 from app.models.base import Base, UUIDMixin, TimestampMixin
+
+if TYPE_CHECKING:
+    from app.models.stock_movement import StockMovement
 
 
 class User(Base, UUIDMixin, TimestampMixin):
@@ -23,6 +27,13 @@ class User(Base, UUIDMixin, TimestampMixin):
         Boolean,
         default=True,
         nullable=False
+    )
+    
+    # Relationships
+    movements: Mapped[list["StockMovement"]] = relationship(
+        "StockMovement",
+        back_populates="user",
+        lazy="selectin"
     )
     
     def __repr__(self) -> str:
