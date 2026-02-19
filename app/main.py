@@ -4,7 +4,7 @@ from fastapi import FastAPI
 
 from app.database import async_session
 from app.seed import seed_database
-from app.api import auth, sources, distribution_centers, products
+from app.api import auth, sources, distribution_centers, products, stock
 
 
 @asynccontextmanager
@@ -58,6 +58,7 @@ app.include_router(auth.router, prefix="/api")
 app.include_router(sources.router, prefix="/api")
 app.include_router(distribution_centers.router, prefix="/api")
 app.include_router(products.router, prefix="/api")
+app.include_router(stock.router, prefix="/api")
 
 
 @app.get("/health")
