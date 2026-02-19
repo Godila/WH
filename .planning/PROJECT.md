@@ -72,6 +72,20 @@
 - **Stack Frontend**: React 18, Vite, TypeScript, Ant Design, Zustand, Axios
 - **Data**: Есть реальный Excel с товарами для импорта
 
+## Current Milestone: v1.0 MVP
+
+**Goal:** Полнофункциональная WMS система для фулфилмента с web-интерфейсом
+
+**Target features:**
+- JWT авторизация и пользовательский доступ
+- Управление товарами, источниками, РЦ
+- 9 типов складских операций с атомарностью
+- Автоматический пересчёт остатков (Stock + DefectStock)
+- Журнал движений с фильтрацией
+- Импорт товаров из Excel
+- Dashboard и web-интерфейс для менеджеров
+- Docker-развёртывание
+
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
@@ -82,4 +96,4 @@
 | 6 фаз MVP | Полный функционал за неделю | — Pending |
 
 ---
-*Last updated: 2026-02-18 after initialization*
+*Last updated: 2026-02-19 after milestone v1.0 started*
