@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Modal, Form, InputNumber, Select, message } from 'antd'
-import { OperationType } from '@/types/movement'
+import { OperationType, type MovementCreate } from '@/types/movement'
 import { OPERATION_CONFIG, OPERATION_LABELS } from '@/utils/operationFields'
 import { createMovement } from '@/api/movements'
 import ProductSelect from '@/components/products/ProductSelect'
@@ -16,7 +16,7 @@ interface OperationFormProps {
 export default function OperationForm({ open, onClose, onSuccess }: OperationFormProps) {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
-  const operationType = Form.useWatch('operation_type', form)
+  const operationType = Form.useWatch('operation_type', form) as OperationType | undefined
 
   const config = operationType ? OPERATION_CONFIG[operationType] : null
 
@@ -30,7 +30,7 @@ export default function OperationForm({ open, onClose, onSuccess }: OperationFor
         quantity: values.quantity,
         source_id: values.source_id,
         distribution_center_id: values.distribution_center_id,
-      })
+      } as MovementCreate)
       message.success('Операция успешно проведена')
       form.resetFields()
       onSuccess()

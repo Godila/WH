@@ -10,11 +10,16 @@ interface ProductSelectProps {
   disabled?: boolean
 }
 
+interface ProductOption {
+  value: number
+  label: string
+  product: Product
+}
+
 export default function ProductSelect({ value, onChange, style, disabled }: ProductSelectProps) {
-  const [options, setOptions] = useState<{ value: number; label: string }[]>([])
+  const [options, setOptions] = useState<ProductOption[]>([])
   const [loading, setLoading] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  const debounceRef = useRef<NodeJS.Timeout | null>(null)
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleSearch = useCallback((query: string) => {
     if (debounceRef.current) {
@@ -30,7 +35,7 @@ export default function ProductSelect({ value, onChange, style, disabled }: Prod
       setLoading(true)
       try {
         const data = await searchProducts(query)
-        const formatted = data.items.map((p) => ({
+        const formatted: ProductOption[] = data.items.map((p) => ({
           value: p.id,
           label: `${p.barcode} | ${p.seller_sku || '-'} | ${p.brand || '-'}`,
           product: p,
@@ -44,13 +49,11 @@ export default function ProductSelect({ value, onChange, style, disabled }: Prod
     }, 300)
   }, [])
 
-  const handleSelect = (selectedValue: number, option: { product: Product }) => {
-    setSelectedProduct(option.product)
+  const handleSelect = (selectedValue: number) => {
     onChange?.(selectedValue)
   }
 
   const handleClear = () => {
-    setSelectedProduct(null)
     setOptions([])
     onChange?.(undefined)
   }

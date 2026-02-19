@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Card, Col, Row, Statistic, Table, Input, Space, Spin, Button } from 'antd'
-import { PackageOutlined, InboxOutlined, WarningOutlined, PlusOutlined } from '@ant-design/icons'
+import { InboxOutlined, WarningOutlined, PlusOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
 import { getProducts, searchProducts } from '@/api/products'
 import { getStockSummary } from '@/api/stock'
@@ -130,7 +130,7 @@ export default function Dashboard() {
             <Statistic
               title="Всего товаров"
               value={summary?.total_products ?? 0}
-              prefix={<PackageOutlined />}
+              prefix={<InboxOutlined />}
               loading={!summary}
             />
           </Card>

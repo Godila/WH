@@ -1,10 +1,12 @@
-export enum OperationType {
-  RETURN_PICKUP = 'RETURN_PICKUP',
-  RETURN_DEFECT = 'RETURN_DEFECT',
-  SELF_PURCHASE = 'SELF_PURCHASE',
-  SHIPMENT_RC = 'SHIPMENT_RC',
-  UTILIZATION = 'UTILIZATION',
-}
+export const OperationType = {
+  RETURN_PICKUP: 'RETURN_PICKUP',
+  RETURN_DEFECT: 'RETURN_DEFECT',
+  SELF_PURCHASE: 'SELF_PURCHASE',
+  SHIPMENT_RC: 'SHIPMENT_RC',
+  UTILIZATION: 'UTILIZATION',
+} as const
+
+export type OperationType = typeof OperationType[keyof typeof OperationType]
 
 export interface MovementCreate {
   operation_type: OperationType
