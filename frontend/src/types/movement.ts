@@ -23,3 +23,28 @@ export interface MovementResponse {
   distribution_center_id: number | null
   created_at: string
 }
+
+export interface Movement extends MovementResponse {
+  product_barcode?: string
+  product_brand?: string
+  product_size?: string
+  source_name?: string
+  dc_name?: string
+}
+
+export interface MovementsResponse {
+  items: Movement[]
+  total: number
+  skip: number
+  limit: number
+}
+
+export interface MovementFilters {
+  skip?: number
+  limit?: number
+  operation_type?: OperationType
+  product_id?: number
+  date_from?: string
+  date_to?: string
+  barcode?: string
+}
