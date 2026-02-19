@@ -17,3 +17,6 @@ passlib[bcrypt]>=1.7.4
 
 # Development
 python-multipart>=0.0.6
+
+# Excel parsing
+openpyxl>=3.1.0
