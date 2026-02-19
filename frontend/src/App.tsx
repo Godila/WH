@@ -3,10 +3,7 @@ import Login from '@/pages/Login'
 import Dashboard from '@/pages/Dashboard'
 import ProtectedRoute from '@/components/common/ProtectedRoute'
 import AppLayout from '@/components/layout/AppLayout'
-
-function Movements() {
-  return <div style={{ padding: 24 }}>Журнал движений</div>
-}
+import Journal from '@/pages/Movements/Journal'
 
 function App() {
   return (
@@ -14,7 +11,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/movements" element={<Movements />} />
+        <Route path="/movements" element={<Journal />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
