@@ -1,0 +1,38 @@
+# Environment files (keep .env.example)
+.env
+.env.*
+!.env.example
+
+# Python artifacts
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv
+venv/
+env/
+
+# Node/Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.nuxt/
+frontend/.output/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+
+# Planning
+.planning/
