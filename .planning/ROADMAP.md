@@ -55,6 +55,12 @@ Plans:
 - PROD-01 through PROD-08 — Управление товарами
 - STOCK-01, STOCK-02 — Автосоздание Stock/DefectStock
 
+**Plans:** 2 plans in 2 waves
+
+Plans:
+- [ ] 02-01-PLAN.md — Data layer: Product/Stock/DefectStock models, schemas, migration
+- [ ] 02-02-PLAN.md — API layer: Products CRUD with auto-stock creation, pagination, search
+
 **Success Criteria:**
 1. Менеджер может создать товар с полями barcode, GTIN, seller_sku, size, brand, color
 2. Система запрещает создание товаров с дублирующимися barcode или GTIN
