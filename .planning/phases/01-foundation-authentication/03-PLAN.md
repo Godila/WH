@@ -2,8 +2,8 @@
 phase: 01-foundation-authentication
 plan: 03
 type: execute
-wave: 2
-depends_on: [01]
+wave: 3
+depends_on: [01, 02]
 files_modified:
   - app/seed.py
   - app/main.py
