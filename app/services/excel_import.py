@@ -10,7 +10,7 @@ from app.models.product import Product
 from app.models.stock import Stock
 from app.models.defect_stock import DefectStock
 
-_schemas = importlib.import_module("app.schemas.import")
+_schemas = importlib.import_module("app.schemas.import_schema")
 ExcelImportRow = _schemas.ExcelImportRow
 ExcelImportError = _schemas.ExcelImportError
 ExcelImportResult = _schemas.ExcelImportResult
