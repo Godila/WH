@@ -111,6 +111,13 @@ Plans:
 **Requirements:**
 - IMP-01, IMP-02, IMP-03, IMP-04, IMP-05 — Импорт из Excel
 
+**Plans:** 3 plans in 3 waves
+
+Plans:
+- [ ] 04-01-PLAN.md — Schemas + openpyxl dependency
+- [ ] 04-02-PLAN.md — ExcelImportService with parsing, validation, batch upsert
+- [ ] 04-03-PLAN.md — API endpoint + router wiring + verification
+
 **Success Criteria:**
 1. Менеджер может загрузить Excel файл с листом "Сводная"
 2. Система создаёт новые товары или обновляет существующие по баркоду (upsert)
