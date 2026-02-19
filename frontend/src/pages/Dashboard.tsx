@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Card, Col, Row, Statistic, Table, Input, Space, Spin } from 'antd'
-import { PackageOutlined, InboxOutlined, WarningOutlined } from '@ant-design/icons'
+import { Card, Col, Row, Statistic, Table, Input, Space, Spin, Button } from 'antd'
+import { PackageOutlined, InboxOutlined, WarningOutlined, PlusOutlined } from '@ant-design/icons'
 import type { ColumnsType } from 'antd/es/table'
 import { getProducts, searchProducts } from '@/api/products'
 import { getStockSummary } from '@/api/stock'
 import type { ProductWithStock } from '@/types/product'
 import type { StockSummary } from '@/types/stock'
+import OperationForm from '@/pages/Movements/OperationForm'
 
 const columns: ColumnsType<ProductWithStock> = [
   {
@@ -66,6 +67,7 @@ export default function Dashboard() {
   const [summary, setSummary] = useState<StockSummary | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [pagination, setPagination] = useState({ current: 1, pageSize: 20 })
+  const [operationFormOpen, setOperationFormOpen] = useState(false)
 
   const fetchSummary = async () => {
     try {
@@ -115,6 +117,11 @@ export default function Dashboard() {
     fetchProducts(newPagination.current, newPagination.pageSize, searchQuery)
   }
 
+  const handleOperationSuccess = () => {
+    fetchSummary()
+    fetchProducts(pagination.current, pagination.pageSize, searchQuery)
+  }
+
   return (
     <Space direction="vertical" size="large" style={{ width: '100%' }}>
       <Row gutter={16}>
@@ -152,14 +159,24 @@ export default function Dashboard() {
       </Row>
 
       <Card title="Товары">
-        <Input.Search
-          placeholder="Поиск по штрихкоду"
-          allowClear
-          enterButton="Поиск"
-          size="large"
-          onSearch={handleSearch}
-          style={{ marginBottom: 16 }}
-        />
+        <Space style={{ marginBottom: 16 }}>
+          <Input.Search
+            placeholder="Поиск по штрихкоду"
+            allowClear
+            enterButton="Поиск"
+            size="large"
+            onSearch={handleSearch}
+            style={{ width: 300 }}
+          />
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            size="large"
+            onClick={() => setOperationFormOpen(true)}
+          >
+            Провести операцию
+          </Button>
+        </Space>
         <Spin spinning={loading}>
           <Table
             columns={columns}
@@ -177,6 +194,12 @@ export default function Dashboard() {
           />
         </Spin>
       </Card>
+
+      <OperationForm
+        open={operationFormOpen}
+        onClose={() => setOperationFormOpen(false)}
+        onSuccess={handleOperationSuccess}
+      />
     </Space>
   )
 }
