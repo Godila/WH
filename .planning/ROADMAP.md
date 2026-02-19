@@ -26,6 +26,14 @@ WMS система для фулфилмента маркетплейсов РФ
 - DC-01, DC-02, DC-03 — Справочник РЦ
 - INF-02, INF-03, INF-05 — Миграции, seed, Swagger
 
+**Plans:** 4 plans in 3 waves
+
+Plans:
+- [ ] 01-PLAN.md — Database models, async engine, Alembic migrations
+- [ ] 02-PLAN.md — JWT auth system (login, me, get_current_user)
+- [ ] 03-PLAN.md — Seed data (4 sources, 9 DCs, admin user)
+- [ ] 04-PLAN.md — Reference data CRUD APIs with Swagger
+
 **Success Criteria:**
 1. Менеджер может войти в систему с email и паролем
 2. Система выдаёт JWT токен после успешного логина
@@ -131,7 +139,7 @@ WMS система для фулфилмента маркетплейсов РФ
 
 | Phase | Status | Requirements | Progress |
 |-------|--------|--------------|----------|
-| 1 - Foundation & Authentication | Not Started | 13 | ░░░░░ 0% |
+| 1 - Foundation & Authentication | Planning Complete | 13 | ░░░░░ 0% |
 | 2 - Master Data & Warehouses | Not Started | 10 | ░░░░░ 0% |
 | 3 - Stock Core & Operations | Not Started | 22 | ░░░░░ 0% |
 | 4 - Excel Import | Not Started | 5 | ░░░░░ 0% |
