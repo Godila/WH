@@ -18,16 +18,16 @@
 
 ## Current Position
 
-**Phase:** 2 - Master Data & Warehouses
+**Phase:** 3 - Stock Core & Operations
 **Plan:** None yet
-**Status:** Phase 1 Complete, Ready for Phase 2
-**Progress:** `██░░░░ 17%`
+**Status:** Phase 2 Complete, Ready for Phase 3
+**Progress:** `████░░ 35%`
 
 ```
-[████░░░░░░░░░░░░░░] 17% — Phase 1 Complete
+[████████░░░░░░░░░░] 35% — Phase 2 Complete
 
 Phase 1: Foundation & Authentication  ██████ 100% ✓
-Phase 2: Master Data & Warehouses     ░░░░░░ 0%
+Phase 2: Master Data & Warehouses     ██████ 100% ✓
 Phase 3: Stock Core & Operations      ░░░░░░ 0%
 Phase 4: Excel Import                 ░░░░░░ 0%
 Phase 5: Frontend & Reports           ░░░░░░ 0%
@@ -40,10 +40,10 @@ Phase 6: Infrastructure & Deployment  ░░░░░░ 0%
 
 | Metric | Value |
 |--------|-------|
-| Phases Complete | 1/6 |
-| Requirements Done | 13/66 |
-| Plans Executed | 4 |
-| Commits | 6 |
+| Phases Complete | 2/6 |
+| Requirements Done | 23/66 |
+| Plans Executed | 6 |
+| Commits | 9 |
 | Time Elapsed | 0 days |
 
 ---
@@ -56,15 +56,17 @@ Phase 6: Infrastructure & Deployment  ░░░░░░ 0%
 |----------|-----------|---------|
 | Stack: FastAPI + SQLAlchemy 2.0 async + PostgreSQL + React 18 + Ant Design | Production-ready async patterns, enterprise UI | ✓ Validated |
 | Service layer pattern for stock operations | Atomic operations, validation, audit logging | ✓ Validated |
-| GTIN + Barcode оба уникальны | Баркод для МП, GTIN для внутренних процессов | — Pending |
+| GTIN + Barcode оба уникальны | Баркод для МП, GTIN для внутренних процессов | ✓ Validated |
 | Только свои склады | НЕ отслеживаем остатки маркетплейсов | — Pending |
 | 9 атомарных операций | Покрывают все бизнес-сценарии фулфилмента | — Pending |
 | 6 фаз MVP | Полный функционал за неделю | — Pending |
 | JWT auth with python-jose + bcrypt | Secure auth with configurable token expiration | ✓ Validated |
+| Product-Stock one-to-one relationship | Each product has exactly one Stock and one DefectStock | ✓ Validated |
+| Soft delete for products | Preserve data integrity, allow recovery | ✓ Validated |
 
 ### Active Todos
 
-- [ ] Run `/gsd-plan-phase 2` to plan Master Data & Warehouses phase
+- [ ] Run `/gsd-plan-phase 3` to plan Stock Core & Operations phase
 
 ### Blockers
 
@@ -72,7 +74,7 @@ None currently.
 
 ### Session Notes
 
-**2026-02-19:** Phase 1 complete. JWT auth, Sources CRUD, DCs CRUD working. Ready for Phase 2.
+**2026-02-19:** Phase 2 complete. Products CRUD API with auto-stock creation working. Ready for Phase 3.
 
 ---
 
@@ -95,13 +97,31 @@ None currently.
 
 ---
 
+## Phase 2 Summary
+
+**What was built:**
+- Product, Stock, DefectStock models with one-to-one relationships
+- Products CRUD API with auto-stock creation
+- Pagination and barcode search
+- Soft delete support
+- ProductWithStockResponse for stock info display
+
+**API Endpoints:**
+- POST /api/products/ - Create product + auto-create Stock and DefectStock
+- GET /api/products/ - List products with pagination
+- GET /api/products/{id} - Get single product
+- PUT /api/products/{id} - Update product
+- DELETE /api/products/{id} - Soft delete product
+
+---
+
 ## Session Continuity
 
 ### Quick Context for New Sessions
 
 1. **Read:** `PROJECT.md`, `ROADMAP.md`
-2. **Current Phase:** 2 - Master Data & Warehouses
-3. **Next Action:** `/gsd-plan-phase 2`
+2. **Current Phase:** 3 - Stock Core & Operations
+3. **Next Action:** `/gsd-plan-phase 3`
 4. **Stack:** FastAPI + SQLAlchemy async + PostgreSQL + React + Ant Design
 
 ### File Locations
@@ -112,12 +132,17 @@ app/
 │   ├── auth.py          # Login, /me
 │   ├── deps.py          # get_current_user
 │   ├── sources.py       # Sources CRUD
-│   └── distribution_centers.py  # DCs CRUD
+│   ├── distribution_centers.py  # DCs CRUD
+│   └── products.py      # Products CRUD (new)
 ├── core/                # Core configuration
 │   ├── config.py        # Pydantic settings
 │   └── security.py      # JWT, password hashing
 ├── models/              # SQLAlchemy models
+│   ├── product.py       # Product model (new)
+│   ├── stock.py         # Stock model (new)
+│   └── defect_stock.py  # DefectStock model (new)
 ├── schemas/             # Pydantic schemas
+│   └── product.py       # Product schemas (new)
 ├── services/            # Business logic
 │   └── auth.py          # AuthService
 ├── database.py          # Async engine
@@ -127,4 +152,4 @@ app/
 
 ---
 
-*State updated: 2026-02-19 after Phase 1 completion*
+*State updated: 2026-02-19 after Phase 2 completion*

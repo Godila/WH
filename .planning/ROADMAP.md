@@ -49,6 +49,8 @@ Plans:
 
 **Goal:** Менеджеры могут управлять товарами и видеть текущие остатки
 
+**Status:** ✓ Complete (2026-02-19)
+
 **Dependencies:** Phase 1 (auth, database, seed data)
 
 **Requirements:**
@@ -58,8 +60,8 @@ Plans:
 **Plans:** 2 plans in 2 waves
 
 Plans:
-- [ ] 02-01-PLAN.md — Data layer: Product/Stock/DefectStock models, schemas, migration
-- [ ] 02-02-PLAN.md — API layer: Products CRUD with auto-stock creation, pagination, search
+- [x] 02-01-PLAN.md — Data layer: Product/Stock/DefectStock models, schemas, migration
+- [x] 02-02-PLAN.md — API layer: Products CRUD with auto-stock creation, pagination, search
 
 **Success Criteria:**
 1. Менеджер может создать товар с полями barcode, GTIN, seller_sku, size, brand, color
@@ -148,14 +150,14 @@ Plans:
 | Phase | Status | Requirements | Progress |
 |-------|--------|--------------|----------|
 | 1 - Foundation & Authentication | ✓ Complete | 13 | ██████ 100% |
-| 2 - Master Data & Warehouses | Not Started | 10 | ░░░░░ 0% |
+| 2 - Master Data & Warehouses | ✓ Complete | 10 | ██████ 100% |
 | 3 - Stock Core & Operations | Not Started | 22 | ░░░░░ 0% |
 | 4 - Excel Import | Not Started | 5 | ░░░░░ 0% |
 | 5 - Frontend & Reports | Not Started | 14 | ░░░░░ 0% |
 | 6 - Infrastructure & Deployment | Not Started | 2 | ░░░░░ 0% |
 
 **Total:** 66 requirements across 6 phases
-**Completed:** 13/66 (20%)
+**Completed:** 23/66 (35%)
 
 ---
 
