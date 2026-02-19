@@ -204,10 +204,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-11 | Phase 5 | Complete |
 | UI-12 | Phase 5 | Complete |
 | UI-13 | Phase 5 | Complete |
-| INF-01 | Phase 6 | Pending |
+| INF-01 | Phase 6 | Complete |
 | INF-02 | Phase 1 | Complete |
 | INF-03 | Phase 1 | Complete |
-| INF-04 | Phase 6 | Pending |
+| INF-04 | Phase 6 | Complete |
 | INF-05 | Phase 1 | Complete |
 
 **Coverage:**
@@ -217,4 +217,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-18*
-*Last updated: 2026-02-19 after Phase 5 completion*
+*Last updated: 2026-02-19 after Phase 6 completion (MVP v1.0)*

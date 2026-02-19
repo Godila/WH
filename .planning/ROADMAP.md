@@ -162,6 +162,8 @@ Plans:
 
 **Goal:** Система развёрнута в Docker и готова к продакшен-использованию
 
+**Status:** ✓ Complete (2026-02-19)
+
 **Dependencies:** Phase 5 (complete system)
 
 **Requirements:**
@@ -171,9 +173,9 @@ Plans:
 **Plans:** 3 plans in 2 waves
 
 Plans:
-- [ ] 06-01-PLAN.md — Backend Docker setup (Dockerfile.backend, alembic/env.py, .dockerignore)
-- [ ] 06-02-PLAN.md — Frontend Docker setup (Dockerfile.frontend, nginx.conf, .env.example)
-- [ ] 06-03-PLAN.md — Docker Compose integration with healthchecks
+- [x] 06-01-PLAN.md — Backend Docker setup (Dockerfile.backend, alembic/env.py, .dockerignore)
+- [x] 06-02-PLAN.md — Frontend Docker setup (Dockerfile.frontend, nginx.conf, .env.example)
+- [x] 06-03-PLAN.md — Docker Compose integration with healthchecks
 
 **Success Criteria:**
 1. `docker-compose up` поднимает все сервисы (postgres, backend, frontend)
@@ -190,10 +192,10 @@ Plans:
 | 3 - Stock Core & Operations | ✓ Complete | 22 | ██████ 100% |
 | 4 - Excel Import | ✓ Complete | 5 | ██████ 100% |
 | 5 - Frontend & Reports | ✓ Complete | 14 | ██████ 100% |
-| 6 - Infrastructure & Deployment | Not Started | 2 | ░░░░░ 0% |
+| 6 - Infrastructure & Deployment | ✓ Complete | 2 | ██████ 100% |
 
 **Total:** 66 requirements across 6 phases
-**Completed:** 64/66 (97%)
+**Completed:** 66/66 (100%)
 
 ---
 
