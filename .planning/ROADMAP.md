@@ -138,6 +138,15 @@ Plans:
 - RPT-02 — Dashboard статистика
 - UI-01 through UI-13 — Web-интерфейс
 
+**Plans:** 5 plans in 5 waves
+
+Plans:
+- [ ] 05-01-PLAN.md — Foundation: Vite setup, Ant Design, Axios client, Zustand auth, Login page
+- [ ] 05-02-PLAN.md — Dashboard: AppLayout, products table, search, statistics
+- [ ] 05-03-PLAN.md — Operations: Operation form, product autocomplete, dynamic fields
+- [ ] 05-04-PLAN.md — Movement Journal: Table, filters, color coding, pagination
+- [ ] 05-05-PLAN.md — Polish & Verification: Error handling, loading states, integration test
+
 **Success Criteria:**
 1. Менеджер видит Dashboard с таблицей товаров (баркод, GTIN, артикул, бренд, размер, остаток, брак)
 2. Менеджер может искать товар по баркоду или артикулу через autocomplete
