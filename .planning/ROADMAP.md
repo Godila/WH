@@ -168,6 +168,13 @@ Plans:
 - INF-01 — Docker Compose
 - INF-04 — Healthchecks
 
+**Plans:** 3 plans in 2 waves
+
+Plans:
+- [ ] 06-01-PLAN.md — Backend Docker setup (Dockerfile.backend, alembic/env.py, .dockerignore)
+- [ ] 06-02-PLAN.md — Frontend Docker setup (Dockerfile.frontend, nginx.conf, .env.example)
+- [ ] 06-03-PLAN.md — Docker Compose integration with healthchecks
+
 **Success Criteria:**
 1. `docker-compose up` поднимает все сервисы (postgres, backend, frontend)
 2. Контейнеры имеют healthchecks и автоматически перезапускаются при падении
