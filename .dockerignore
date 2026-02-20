@@ -36,3 +36,4 @@ Dockerfile*
 
 # Planning
 .planning/
+VITE_API_URL
