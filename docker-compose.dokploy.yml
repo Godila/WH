@@ -50,6 +50,7 @@ services:
         condition: service_healthy
     networks:
       - wms-network
+      - dokploy-network
 
 volumes:
   postgres_data:
@@ -57,3 +58,5 @@ volumes:
 networks:
   wms-network:
     driver: bridge
+  dokploy-network:
+    external: true
