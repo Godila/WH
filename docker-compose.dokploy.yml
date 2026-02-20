@@ -48,14 +48,6 @@ services:
         condition: service_healthy
     networks:
       - wms-network
-      - dokploy-network
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=dokploy-network
-      - traefik.http.routers.wh-app.rule=Host(`ap.haragy.top`)
-      - traefik.http.routers.wh-app.entrypoints=web
-      - traefik.http.routers.wh-app.service=wh-app
-      - traefik.http.services.wh-app.loadbalancer.server.port=80
 
 volumes:
   postgres_data:
@@ -63,5 +55,3 @@ volumes:
 networks:
   wms-network:
     driver: bridge
-  dokploy-network:
-    external: true
