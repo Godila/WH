@@ -2,7 +2,7 @@ import api from '@/api/client'
 import type { MovementCreate, MovementResponse, MovementsResponse, MovementFilters } from '@/types/movement'
 
 export async function createMovement(data: MovementCreate): Promise<MovementResponse> {
-  const response = await api.post<MovementResponse>('/api/stock/movements', data)
+  const response = await api.post<MovementResponse>('/stock/movements', data)
   return response.data
 }
 
@@ -17,6 +17,6 @@ export async function getMovements(filters: MovementFilters = {}): Promise<Movem
   if (filters.date_to) params.append('date_to', filters.date_to)
   if (filters.barcode) params.append('barcode', filters.barcode)
   
-  const response = await api.get<MovementsResponse>('/api/stock/movements', { params })
+  const response = await api.get<MovementsResponse>('/stock/movements', { params })
   return response.data
 }

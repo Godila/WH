@@ -6,6 +6,6 @@ export interface Source {
 }
 
 export async function getSources(): Promise<Source[]> {
-  const response = await api.get<Source[]>('/api/sources/')
+  const response = await api.get<Source[]>('/sources/')
   return response.data
 }

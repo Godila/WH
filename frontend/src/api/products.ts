@@ -20,7 +20,7 @@ export async function getProducts(
   if (barcode) {
     params.append('barcode', barcode)
   }
-  const response = await api.get<ProductsResponse>(`/api/products/?${params.toString()}`)
+  const response = await api.get<ProductsResponse>(`/products/?${params.toString()}`)
   return response.data
 }
 

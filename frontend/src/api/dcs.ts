@@ -6,6 +6,6 @@ export interface DistributionCenter {
 }
 
 export async function getDCs(): Promise<DistributionCenter[]> {
-  const response = await api.get<DistributionCenter[]>('/api/distribution-centers/')
+  const response = await api.get<DistributionCenter[]>('/distribution-centers/')
   return response.data
 }
