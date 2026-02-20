@@ -29,8 +29,8 @@ DISTRIBUTION_CENTERS = [
 
 # Admin user credentials
 ADMIN_USER = {
-    "email": "admin@wms.local",
-    "password": "admin123",  # Will be hashed
+    "email": "admin@wms.example.com",
+    "password": "admin123",
 }
 
 
