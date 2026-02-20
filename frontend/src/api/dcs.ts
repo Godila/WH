@@ -1,7 +1,7 @@
 import api from '@/api/client'
 
 export interface DistributionCenter {
-  id: number
+  id: string
   name: string
 }
 

@@ -1,28 +1,32 @@
 export const OperationType = {
-  RETURN_PICKUP: 'RETURN_PICKUP',
-  RETURN_DEFECT: 'RETURN_DEFECT',
-  SELF_PURCHASE: 'SELF_PURCHASE',
-  SHIPMENT_RC: 'SHIPMENT_RC',
-  UTILIZATION: 'UTILIZATION',
+  RECEIPT: 'receipt',
+  RECEIPT_DEFECT: 'receipt_defect',
+  SHIPMENT_RC: 'shipment_rc',
+  RETURN_PICKUP: 'return_pickup',
+  RETURN_DEFECT: 'return_defect',
+  SELF_PURCHASE: 'self_purchase',
+  WRITE_OFF: 'write_off',
+  RESTORATION: 'restoration',
+  UTILIZATION: 'utilization',
 } as const
 
 export type OperationType = typeof OperationType[keyof typeof OperationType]
 
 export interface MovementCreate {
   operation_type: OperationType
-  product_id: number
+  product_id: string
   quantity: number
-  source_id?: number
-  distribution_center_id?: number
+  source_id?: string
+  distribution_center_id?: string
 }
 
 export interface MovementResponse {
-  id: number
+  id: string
   operation_type: OperationType
-  product_id: number
+  product_id: string
   quantity: number
-  source_id: number | null
-  distribution_center_id: number | null
+  source_id: string | null
+  distribution_center_id: string | null
   created_at: string
 }
 
@@ -37,15 +41,16 @@ export interface Movement extends MovementResponse {
 export interface MovementsResponse {
   items: Movement[]
   total: number
-  skip: number
-  limit: number
+  page: number
+  page_size: number
+  pages: number
 }
 
 export interface MovementFilters {
-  skip?: number
-  limit?: number
+  page?: number
+  page_size?: number
   operation_type?: OperationType
-  product_id?: number
+  product_id?: string
   date_from?: string
   date_to?: string
   barcode?: string

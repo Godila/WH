@@ -9,8 +9,8 @@ export async function createMovement(data: MovementCreate): Promise<MovementResp
 export async function getMovements(filters: MovementFilters = {}): Promise<MovementsResponse> {
   const params = new URLSearchParams()
   
-  if (filters.skip !== undefined) params.append('skip', String(filters.skip))
-  if (filters.limit !== undefined) params.append('limit', String(filters.limit))
+  if (filters.page !== undefined) params.append('page', String(filters.page))
+  if (filters.page_size !== undefined) params.append('page_size', String(filters.page_size))
   if (filters.operation_type) params.append('operation_type', filters.operation_type)
   if (filters.product_id !== undefined) params.append('product_id', String(filters.product_id))
   if (filters.date_from) params.append('date_from', filters.date_from)

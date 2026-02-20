@@ -3,8 +3,8 @@ import { Select } from 'antd'
 import { getSources, type Source } from '@/api/sources'
 
 interface SourceSelectProps {
-  value?: number
-  onChange?: (value: number | undefined) => void
+  value?: string
+  onChange?: (value: string | undefined) => void
   style?: React.CSSProperties
   disabled?: boolean
 }

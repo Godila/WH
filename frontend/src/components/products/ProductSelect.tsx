@@ -4,14 +4,14 @@ import { searchProducts } from '@/api/products'
 import type { Product } from '@/types/product'
 
 interface ProductSelectProps {
-  value?: number
-  onChange?: (value: number | undefined) => void
+  value?: string
+  onChange?: (value: string | undefined) => void
   style?: React.CSSProperties
   disabled?: boolean
 }
 
 interface ProductOption {
-  value: number
+  value: string
   label: string
   product: Product
 }
@@ -49,7 +49,7 @@ export default function ProductSelect({ value, onChange, style, disabled }: Prod
     }, 300)
   }, [])
 
-  const handleSelect = (selectedValue: number) => {
+  const handleSelect = (selectedValue: string) => {
     onChange?.(selectedValue)
   }
 

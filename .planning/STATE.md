@@ -75,6 +75,7 @@ None currently.
 
 ### Session Notes
 
+**2026-02-20:** Integration gaps fixed. Frontend types now match backend schemas.
 **2026-02-19:** MVP v1.0 complete. All 6 phases finished. Docker deployment ready.
 
 ---

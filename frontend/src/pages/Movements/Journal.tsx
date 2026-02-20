@@ -80,8 +80,8 @@ export default function Journal() {
     setLoading(true)
     try {
       const params: MovementFilters = {
-        skip: (pagination.current - 1) * pagination.pageSize,
-        limit: pagination.pageSize,
+        page: pagination.current,
+        page_size: pagination.pageSize,
         ...filters,
       }
       const response = await getMovements(params)

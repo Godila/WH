@@ -4,16 +4,19 @@ import type { ProductWithStock } from '@/types/product'
 interface ProductsResponse {
   items: ProductWithStock[]
   total: number
+  page: number
+  page_size: number
+  pages: number
 }
 
 export async function getProducts(
-  skip = 0,
-  limit = 20,
+  page = 1,
+  pageSize = 20,
   barcode?: string
 ): Promise<ProductsResponse> {
   const params = new URLSearchParams()
-  params.append('skip', String(skip))
-  params.append('limit', String(limit))
+  params.append('page', String(page))
+  params.append('page_size', String(pageSize))
   if (barcode) {
     params.append('barcode', barcode)
   }
@@ -22,5 +25,5 @@ export async function getProducts(
 }
 
 export async function searchProducts(query: string): Promise<ProductsResponse> {
-  return getProducts(0, 20, query)
+  return getProducts(1, 20, query)
 }

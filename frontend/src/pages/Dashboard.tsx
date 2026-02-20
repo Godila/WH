@@ -45,15 +45,15 @@ const columns: ColumnsType<ProductWithStock> = [
   },
   {
     title: 'Остаток',
-    dataIndex: 'stock',
-    key: 'stock',
+    dataIndex: 'stock_quantity',
+    key: 'stock_quantity',
     width: 100,
     align: 'right',
   },
   {
     title: 'Брак',
-    dataIndex: 'defect_stock',
-    key: 'defect_stock',
+    dataIndex: 'defect_quantity',
+    key: 'defect_quantity',
     width: 100,
     align: 'right',
     render: (val: number) => (val > 0 ? <span style={{ color: '#ff4d4f' }}>{val}</span> : val),
@@ -82,10 +82,9 @@ export default function Dashboard() {
     async (page = 1, pageSize = 20, query = '') => {
       setLoading(true)
       try {
-        const skip = (page - 1) * pageSize
         const data = query
           ? await searchProducts(query)
-          : await getProducts(skip, pageSize)
+          : await getProducts(page, pageSize)
         setProducts(data.items)
         setTotal(data.total)
       } catch (error) {

@@ -3,8 +3,8 @@ import { Select } from 'antd'
 import { getDCs, type DistributionCenter } from '@/api/dcs'
 
 interface DCSelectProps {
-  value?: number
-  onChange?: (value: number | undefined) => void
+  value?: string
+  onChange?: (value: string | undefined) => void
   style?: React.CSSProperties
   disabled?: boolean
 }

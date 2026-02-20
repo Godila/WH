@@ -1,5 +1,5 @@
 export interface Product {
-  id: number
+  id: string
   barcode: string
   gtin: string | null
   seller_sku: string | null
@@ -11,6 +11,6 @@ export interface Product {
 }
 
 export interface ProductWithStock extends Product {
-  stock: number
-  defect_stock: number
+  stock_quantity: number
+  defect_quantity: number
 }
